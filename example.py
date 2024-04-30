@@ -1,11 +1,17 @@
 from serialToExcel import SerialToExcel
+import time
 
-serialToExcel = SerialToExcel("COM36",115200)
+serialToExcel = SerialToExcel("COM3", 9600)
 
-columnas = ["Nro Lectura","Valor"]
+# Definir las columnas y número de registros
+columnas = ["Nro Lectura", "Valor"]
+serialToExcel.setColumns(columnas)
 
-serialToExcel.setColumns(["Nro Lectura","Valor"])
-serialToExcel.setRecordsNumber(10)
+serialToExcel.setRecordsNumber(50)
+
+
+# Leer desde el puerto serial
 serialToExcel.readPort()
 
-serialToExcel.writeFile("archivo1.xls")
+# Escribir en el archivo Excel
+serialToExcel.writeFile("temperaturafinal.xls")
